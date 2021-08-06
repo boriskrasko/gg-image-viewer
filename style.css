@@ -17,6 +17,11 @@ img {
   background-size: cover;
 }
 
+.box:hover {
+  border-color: #08f;
+  opacity: 0.9;
+}
+
 .image {
   position: relative;
   overflow: hidden;
