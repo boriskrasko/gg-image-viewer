@@ -25,8 +25,9 @@
             <img src="icons/cancel.svg" alt="x">
             </button>
           </div>
+          <div @click="descriptionVisible = false" @mouseover="curtainVisible = true" @mouseleave="curtainVisible = false" v-bind:class="[(!descriptionVisible) ? 'none' : '']" class="curtain"><img v-if="curtainVisible" src="icons/expand.svg"></div>
           <iframe v-if="mapVisible" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10072.598738693176!2d4.4638652394713505!3d50.86542857255454!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c3dc18c1dad789%3A0xe0cde7c7dfc686f7!2sSterrebeek%2C%201933%20Zaventem%2C%20Belgia!5e0!3m2!1spl!2sby!4v1628287034820!5m2!1spl!2sby" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-          <img :src=" 'img/img-' + id +'.jpg' " @click="descriptionVisible = !descriptionVisible">
+          <img :src=" 'img/img-' + id +'.jpg' " @click="descriptionVisible = !descriptionVisible" @mouseover="curtainVisible = true"  @mouseleave="curtainVisible = false">
         </div>
         <div class="col-lg-6" v-if="descriptionVisible">
           <h4>Afbeeldingen:</h4>

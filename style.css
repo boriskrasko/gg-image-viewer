@@ -39,6 +39,19 @@ img {
   align-items: center;
 }
 
+.curtain {
+  position: absolute;
+  width: 10%;
+  left: 45%;
+  right: 45%;
+  top: 45%;
+  bottom: 45%;
+}
+
+.none {
+  display: none;
+}
+
 button {
   display: flex;
   width: 20%;
