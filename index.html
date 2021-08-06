@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang>
+  <head>
+    <meta charset="utf-8">
+    <title>Images Viewer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body >
+    <div id="app" class="container" @keydown.left = "(id > 1) ? id-- : id = variants.length" @keydown.right = "(id < variants.length) ? id++ : id = 1">
+      <h2>{{title}}</h2>
+      <div class="row">
+        <div class="col-lg-6 image" v-bind:class="[(!descriptionVisible) ? 'full' : '']">
+          <div class="btns" v-if="!descriptionVisible">
+            <button @click="(id > 1) ? id-- : id = variants.length">
+            <img src="icons/left-arrow.svg" alt="<">
+            </button>
+            <button v-bind:style="{width: activeWidth + '%', height: activeHeight + '%' }" @click="descriptionVisible = !descriptionVisible"></button>
+            <button @click="(id < variants.length) ? id++ : id = 1">
+            <img src="icons/right-arrow.svg" alt=">">
+            </button>
+            <button class="closeBtn" @click="descriptionVisible = !descriptionVisible">
+            <img src="icons/cancel.svg" alt="x">
+            </button>
+          </div>
+          <img :src=" 'img/img-' + id +'.jpg' " @click="descriptionVisible = !descriptionVisible">
+        </div>
+        <div class="col-lg-6" v-if="descriptionVisible">
+          <h4>Afbeeldingen:</h4>
+          <ul class="miniatures">
+            <li v-for="variant in variants" :key="variant.id" class="box" :style="{backgroundImage: variant.miniature}" @mouseover="updateProduct(variant.vImage, variant.id)" @click="descriptionVisible = !descriptionVisible">
+            </li>
+          </ul>
+          <h3>
+          {{description}}</h2>
+          <address><a href="https://www.google.com/maps/place/GGVloerbekleding+bvba/@51.0532724,5.7378526,15z/data=!4m5!3m4!1s0x0:0xa831bc10b126f764!8m2!3d51.0532724!4d5.7378526">
+            Kloosterpark 3,
+            B 3650 Dilsen-Stokkem </a>
+          </address>
+          <h3>
+          Zo goed als nieuw:</h4>
+          <ul>
+            <li v-for="type in types">{{type}}</li>
+          </ul>
+          <h3>
+          Labels:</h4>
+          <ul>
+            <li v-for="detail in details">{{detail}}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
