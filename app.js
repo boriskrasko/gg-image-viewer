@@ -7,6 +7,8 @@ new Vue({
     types: ['afschuren', 'afkappen', 'bijwerken', 'schilderen', 'schuren'],
     details: ['#gg_floors_constructions'],
     descriptionVisible: true,
+    mapVisible: false,
+    curtainVisible: false,
     activeWidth: 100,
     activeHeight: 100,
     id: 4,

@@ -12,7 +12,7 @@
     <div id="app" class="container" @keydown.left = "(id > 1) ? id-- : id = variants.length" @keydown.right = "(id < variants.length) ? id++ : id = 1">
       <h2>{{title}}</h2>
       <div class="row">
-        <div class="col-lg-6 image" v-bind:class="[(!descriptionVisible) ? 'full' : '']">
+        <div class="col-lg-6 image" v-bind:class="[(!descriptionVisible) ? 'full' : '']" @mouseover="curtainVisible = true" @mouseleave="curtainVisible = false">
           <div class="btns" v-if="!descriptionVisible">
             <button @click="(id > 1) ? id-- : id = variants.length">
             <img src="icons/left-arrow.svg" alt="<">
@@ -25,7 +25,9 @@
             <img src="icons/cancel.svg" alt="x">
             </button>
           </div>
-          <img :src=" 'img/img-' + id +'.jpg' " @click="descriptionVisible = !descriptionVisible">
+          <div @click="descriptionVisible = false" @mouseover="curtainVisible = true" @mouseleave="curtainVisible = false" v-bind:class="[(!descriptionVisible) ? 'none' : '']" class="curtain"><img v-if="curtainVisible" src="icons/expand.svg"></div>
+          <iframe v-if="mapVisible" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10072.598738693176!2d4.4638652394713505!3d50.86542857255454!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c3dc18c1dad789%3A0xe0cde7c7dfc686f7!2sSterrebeek%2C%201933%20Zaventem%2C%20Belgia!5e0!3m2!1spl!2sby!4v1628287034820!5m2!1spl!2sby" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+          <img :src=" 'img/img-' + id +'.jpg'" @click="descriptionVisible = !descriptionVisible">
         </div>
         <div class="col-lg-6" v-if="descriptionVisible">
           <h4>Afbeeldingen:</h4>
@@ -35,9 +37,9 @@
           </ul>
           <h3>
           {{description}}</h2>
-          <address><a href="https://www.google.com/maps/place/GGVloerbekleding+bvba/@51.0532724,5.7378526,15z/data=!4m5!3m4!1s0x0:0xa831bc10b126f764!8m2!3d51.0532724!4d5.7378526">
-            Kloosterpark 3,
-            B 3650 Dilsen-Stokkem </a>
+          <address><a  @mouseover="mapVisible = true" @mouseleave="mapVisible = false" href="https://goo.gl/maps/5fRYgM7jEbX6CRZC6">
+            Sterrebeek
+            1933 Zaventem, Belgia</a>
           </address>
           <h3>
           Zo goed als nieuw:</h4>
