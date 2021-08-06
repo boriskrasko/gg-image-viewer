@@ -17,11 +17,11 @@
             <button @click="(id > 1) ? id-- : id = variants.length">
             <img src="icons/left-arrow.svg" alt="<">
             </button>
-            <button v-bind:style="{width: activeWidth + '%', height: activeHeight + '%' }" @click="descriptionVisible = !descriptionVisible"></button>
+            <button v-bind:style="{width: activeWidth + '%', height: activeHeight + '%' }" @click="descriptionVisible = !descriptionVisible; curtainVisible = false"></button>
             <button @click="(id < variants.length) ? id++ : id = 1">
             <img src="icons/right-arrow.svg" alt=">">
             </button>
-            <button class="closeBtn" @click="descriptionVisible = !descriptionVisible">
+            <button class="closeBtn" @click="descriptionVisible = !descriptionVisible; curtainVisible = false">
             <img src="icons/cancel.svg" alt="x">
             </button>
           </div>
