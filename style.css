@@ -86,3 +86,7 @@ button img {
 button:hover {
   opacity: 1;
 }
+
+@media screen and (max-width: 540px) {
+  .curtain {display: none}
+}
