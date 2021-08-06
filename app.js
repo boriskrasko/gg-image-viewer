@@ -81,3 +81,80 @@ new Vue({
     },
   },
 })
+new Vue({
+  el: '#terras',
+  data: {
+    title: "Wat een pareltje.",
+    image: 'img/terras/img-4.jpg',
+    description: "Golf Park Tervuren voor het vertrouwen.",
+    types: ["vloeren", "terrassen", "schilderwerken", "pleisterwerke", "dakwerken"],
+    details: ['#gg_floors_constructions'],
+    descriptionVisible: true,
+    mapVisible: false,
+    curtainVisible: false,
+    activeWidth: 100,
+    activeHeight: 100,
+    id: 4,
+    variants: [{
+        id: 1,
+        miniature: 'url(img/terras/img-1.jpg)',
+        vImage: 'img/terras/img-1.jpg',
+      },
+
+      {
+        id: 2,
+        miniature: 'url(img/terras/img-2.jpg)',
+        vImage: 'img/terras/img-2.jpg',
+      },
+
+      {
+        id: 3,
+        miniature: 'url(img/terras/img-3.jpg)',
+        vImage: 'img/terras/img-3.jpg',
+      },
+
+      {
+        id: 4,
+        miniature: 'url(img/terras/img-4.jpg)',
+        vImage: 'img/terras/img-4.jpg',
+      },
+
+      {
+        id: 5,
+        miniature: 'url(img/terras/img-5.jpg)',
+        vImage: 'img/terras/img-5.jpg',
+      },
+
+      {
+        id: 6,
+        miniature: 'url(img/terras/img-6.jpg)',
+        vImage: 'img/terras/img-6.jpg',
+      },
+
+      {
+        id: 7,
+        miniature: 'url(img/terras/img-7.jpg)',
+        vImage: 'img/terras/img-7.jpg',
+      },
+
+      {
+        id: 8,
+        miniature: 'url(img/terras/img-8.jpg)',
+        vImage: 'img/terras/img-8.jpg',
+      },
+
+      {
+        id: 9,
+        miniature: 'url(img/terras/img-9.jpg)',
+        vImage: 'img/terras/img-9.jpg',
+      },
+
+    ]
+  },
+  methods: {
+    updateProduct(vImage, id) {
+      this.image = vImage;
+      this.id = id;
+    },
+  },
+})

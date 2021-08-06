@@ -11,6 +11,7 @@
   <body >
     <div id="app" class="container" @keydown.left = "(id > 1) ? id-- : id = variants.length" @keydown.right = "(id < variants.length) ? id++ : id = 1">
       <h2>{{title}}</h2>
+      <br>
       <div class="row">
         <div class="col-lg-6 image" v-bind:class="[(!descriptionVisible) ? 'full' : '']" @mouseover="curtainVisible = true" @mouseleave="curtainVisible = false">
           <div class="btns" v-if="!descriptionVisible">
@@ -53,7 +54,52 @@
           </ul>
         </div>
       </div>
-    </div>
+    </div><br><br>
+    <div id="terras" class="container" @keydown.left = "(id > 1) ? id-- : id = variants.length" @keydown.right = "(id < variants.length) ? id++ : id = 1">
+      <h2>{{title}}</h2>
+      <br>
+      <div class="row">
+        <div class="col-lg-6 image" v-bind:class="[(!descriptionVisible) ? 'full' : '']" @mouseover="curtainVisible = true" @mouseleave="curtainVisible = false">
+          <div class="btns" v-if="!descriptionVisible">
+            <button @click="(id > 1) ? id-- : id = variants.length">
+            <img src="icons/left-arrow.svg" alt="<">
+            </button>
+            <button v-bind:style="{width: activeWidth + '%', height: activeHeight + '%' }" @click="descriptionVisible = !descriptionVisible; curtainVisible = false"></button>
+            <button @click="(id < variants.length) ? id++ : id = 1">
+            <img src="icons/right-arrow.svg" alt=">">
+            </button>
+            <button class="closeBtn" @click="descriptionVisible = !descriptionVisible; curtainVisible = false">
+            <img src="icons/cancel.svg" alt="x">
+            </button>
+          </div>
+          <div @click="descriptionVisible = false" @mouseover="curtainVisible = true" @mouseleave="curtainVisible = false" v-bind:class="[(!descriptionVisible) ? 'none' : '']" class="curtain"><img v-if="curtainVisible" src="icons/expand.svg"></div>
+          <iframe v-if="mapVisible" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d40320.28505003619!2d4.481995667403601!3d50.83083392188398!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c3d9432501a437%3A0x33ffef4790666548!2sTervuren%2C%20Belgia!5e0!3m2!1spl!2sby!4v1628292672572!5m2!1spl!2sby" allowfullscreen="" loading="lazy"></iframe>
+          <img :src=" 'img/terras/img-' + id +'.jpg'" @click="descriptionVisible = !descriptionVisible">
+        </div>
+        <div class="col-lg-6" v-if="descriptionVisible">
+          <h4>Afbeeldingen:</h4>
+          <ul class="miniatures">
+            <li v-for="variant in variants" :key="variant.id" class="box" :style="{backgroundImage: variant.miniature}" @mouseover="updateProduct(variant.vImage, variant.id)" @click="descriptionVisible = !descriptionVisible">
+            </li>
+          </ul>
+          <h3>
+          {{description}}</h2>
+          <address><a  @mouseover="mapVisible = true" @mouseleave="mapVisible = false" href="https://goo.gl/maps/oqDNaKwsZWxmnvzW8">
+            Tervuren, Belgia</a>
+          </address>
+          <h3>
+          Zo goed als nieuw:</h4>
+          <ul>
+            <li v-for="type in types">{{type}}</li>
+          </ul>
+          <h3>
+          Labels:</h4>
+          <ul>
+            <li v-for="detail in details">{{detail}}</li>
+          </ul>
+        </div>
+      </div>
+    </div><br><br>
     <script src="app.js"></script>
   </body>
 </html>
