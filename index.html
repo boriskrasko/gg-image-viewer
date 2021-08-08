@@ -9,8 +9,8 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   </head>
   <body>
-    <div id="app" class="container" @keydown.left = "(id > 1) ? id-- : id = variants.length" @keydown.right = "(id < variants.length) ? id++ : id = 1">
-      <h2>{{title}}</h2>
+    <div id="app" class="container-fluid" @keydown.left = "(id > 1) ? id-- : id = variants.length" @keydown.right = "(id < variants.length) ? id++ : id = 1">
+      <h2 class="title">{{title}}</h2>
       <br>
       <div class="row">
         <div class="col-lg-6 image" v-bind:class="[(!descriptionVisible) ? 'full' : '']" @mouseover="curtainVisible = true" @mouseleave="curtainVisible = false">
@@ -33,30 +33,31 @@
         <div class="col-lg-6" v-if="descriptionVisible">
           <h4>Afbeeldingen:</h4>
           <ul class="miniatures">
-            <li v-for="variant in variants" :key="variant.id" class="box" :style="{backgroundImage: variant.miniature}" @mouseover="updateProduct(variant.vImage, variant.id)" @click="descriptionVisible = !descriptionVisible">
+            <li v-for="variant in variants" :key="variant.id" class="box" :style="{backgroundImage: variant.miniature}" @mouseover="updateProduct(variant.vImage, variant.id, variant.vText)" @click="descriptionVisible = !descriptionVisible">
             </li>
           </ul>
           <h3>
-          {{description}}</h2>
+          {{description}}</h3>
           <address><a  @mouseover="mapVisible = true" @mouseleave="mapVisible = false" href="https://goo.gl/maps/5fRYgM7jEbX6CRZC6">
             Sterrebeek
             1933 Zaventem, Belgia</a>
           </address>
           <h3>
-          Zo goed als nieuw:</h4>
+          Zo goed als nieuw:</h3>
           <ul>
             <li v-for="type in types">{{type}}</li>
           </ul>
           <h3>
-          Labels:</h4>
+          Labels:</h3>
           <ul>
             <li v-for="detail in details">{{detail}}</li>
-          </ul>
+          </ul><br>
+          <p>{{text}}</p>
         </div>
       </div>
     </div><br><br>
-    <div id="terras" class="container" @keydown.left = "(id > 1) ? id-- : id = variants.length" @keydown.right = "(id < variants.length) ? id++ : id = 1">
-      <h2>{{title}}</h2>
+    <div id="terras" class="container-fluid" @keydown.left = "(id > 1) ? id-- : id = variants.length" @keydown.right = "(id < variants.length) ? id++ : id = 1">
+      <h2 class="title">{{title}}</h2>
       <br>
       <div class="row">
         <div class="col-lg-6 image" v-bind:class="[(!descriptionVisible) ? 'full' : '']" @mouseover="curtainVisible = true" @mouseleave="curtainVisible = false">
@@ -83,17 +84,17 @@
             </li>
           </ul>
           <h3>
-          {{description}}</h2>
+          {{description}}</h3>
           <address><a  @mouseover="mapVisible = true" @mouseleave="mapVisible = false" href="https://goo.gl/maps/oqDNaKwsZWxmnvzW8">
             Tervuren, Belgia</a>
           </address>
           <h3>
-          Zo goed als nieuw:</h4>
+          Zo goed als nieuw:</h3>
           <ul>
             <li v-for="type in types">{{type}}</li>
           </ul>
           <h3>
-          Labels:</h4>
+          Labels:</h3>
           <ul>
             <li v-for="detail in details">{{detail}}</li>
           </ul>
