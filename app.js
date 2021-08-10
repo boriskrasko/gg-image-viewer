@@ -180,3 +180,63 @@ new Vue({
     },
   },
 })
+new Vue({
+  el: '#zink',
+  data: {
+    title: "Herstellingswerken dakranden uitvoering in zink.",
+    image: 'img/zink/img-2.jpg',
+    description: "Vakmanschap en plaatsing volgens de regels van de kunst.",
+    types: ["dakwerken", "zink"],
+    details: ['#gg_floors_constructions'],
+    descriptionVisible: true,
+    mapVisible: false,
+    curtainVisible: false,
+    activeWidth: 100,
+    activeHeight: 100,
+    id: 2,
+    variants: [{
+        id: 1,
+        miniature: 'url(img/zink/img-1.jpg)',
+        vImage: 'img/zink/img-1.jpg',
+      },
+
+      {
+        id: 2,
+        miniature: 'url(img/zink/img-2.jpg)',
+        vImage: 'img/zink/img-2.jpg',
+      },
+
+      {
+        id: 3,
+        miniature: 'url(img/zink/img-3.jpg)',
+        vImage: 'img/zink/img-3.jpg',
+      },
+
+      {
+        id: 4,
+        miniature: 'url(img/zink/img-4.jpg)',
+        vImage: 'img/zink/img-4.jpg',
+      },
+
+      {
+        id: 5,
+        miniature: 'url(img/zink/img-5.jpg)',
+        vImage: 'img/zink/img-5.jpg',
+      },
+
+      {
+        id: 6,
+        miniature: 'url(img/zink/img-6.jpg)',
+        vImage: 'img/zink/img-6.jpg',
+      },
+
+    ]
+  },
+  methods: {
+    updateProduct(vImage, id, vText) {
+      this.image = vImage;
+      this.id = id;
+      this.text = vText;
+    },
+  },
+})
