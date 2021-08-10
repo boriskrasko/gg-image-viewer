@@ -10,77 +10,78 @@
   </head>
   <body>
     <div id="app" class="container-fluid" @keydown.left = "(id > 1) ? id-- : id = variants.length" @keydown.right = "(id < variants.length) ? id++ : id = 1">
-      <h2 class="title">{{title}}</h2>
+      <h2 class="title app-title">{{title}}</h2>
       <br>
-      <div class="row">
-        <div class="col-lg-6 image" v-bind:class="[(!descriptionVisible) ? 'full' : '']" @mouseover="curtainVisible = true" @mouseleave="curtainVisible = false">
-          <div class="btns" v-if="!descriptionVisible">
-            <button @click="(id > 1) ? id-- : id = variants.length">
+      <div class="row app-row">
+        <div class="col-lg-6 app-image" v-bind:class="[(!descriptionVisible) ? 'full' : '']" @mouseover="curtainVisible = true" @mouseleave="curtainVisible = false">
+          <div class="app-control" v-if="!descriptionVisible">
+            <button class="app-btn" @click="(id > 1) ? id-- : id = variants.length">
             <img src="icons/left-arrow.svg" alt="<">
             </button>
-            <button v-bind:style="{width: activeWidth + '%', height: activeHeight + '%' }" @click="descriptionVisible = !descriptionVisible; curtainVisible = false"></button>
-            <button @click="(id < variants.length) ? id++ : id = 1">
+            <button class="app-btn" v-bind:style="{width: activeWidth + '%', height: activeHeight + '%' }" @click="descriptionVisible = !descriptionVisible; curtainVisible = false"></button>
+            <button class="app-btn" @click="(id < variants.length) ? id++ : id = 1">
             <img src="icons/right-arrow.svg" alt=">">
             </button>
-            <button class="closeBtn" @click="descriptionVisible = !descriptionVisible; curtainVisible = false">
+            <button class="app-btn closeBtn" @click="descriptionVisible = !descriptionVisible; curtainVisible = false">
             <img src="icons/cancel.svg" alt="x">
             </button>
           </div>
-          <div @click="descriptionVisible = false" @mouseover="curtainVisible = true" @mouseleave="curtainVisible = false" v-bind:class="[(!descriptionVisible) ? 'none' : '']" class="curtain"><img v-if="curtainVisible" src="icons/expand.svg"></div>
+          <div @click="descriptionVisible = false" @mouseover="curtainVisible = true" @mouseleave="curtainVisible = false" v-bind:class="[(!descriptionVisible) ? 'none' : '']" class="app-curtain"><img v-if="curtainVisible" src="icons/expand.svg"></div>
           <iframe v-if="mapVisible" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10072.598738693176!2d4.4638652394713505!3d50.86542857255454!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c3dc18c1dad789%3A0xe0cde7c7dfc686f7!2sSterrebeek%2C%201933%20Zaventem%2C%20Belgia!5e0!3m2!1spl!2sby!4v1628287034820!5m2!1spl!2sby" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
           <img :src=" 'img/img-' + id +'.jpg'" @click="descriptionVisible = !descriptionVisible" alt>
         </div>
         <div class="col-lg-6" v-if="descriptionVisible">
           <h4>Afbeeldingen:</h4>
-          <ul class="miniatures">
-            <li v-for="variant in variants" :key="variant.id" class="box" :style="{backgroundImage: variant.miniature}" @mouseover="updateProduct(variant.vImage, variant.id, variant.vText)" @click="descriptionVisible = !descriptionVisible;"><a v-bind:style="{width: activeWidth + '%', height: activeHeight + '%' }" href="#app"></a>
+          <ul class="app-miniatures">
+            <li v-for="variant in variants" :key="variant.id" class="app-box" :style="{backgroundImage: variant.miniature}" @mouseover="updateProduct(variant.vImage, variant.id, variant.vText)" @click="descriptionVisible = !descriptionVisible;"><a v-bind:style="{width: activeWidth + '%', height: activeHeight + '%' }" href="#app"></a>
             </li>
           </ul>
           <h3>
           {{description}}</h3>
-          <address><a  @mouseover="mapVisible = true" @mouseleave="mapVisible = false" href="https://goo.gl/maps/5fRYgM7jEbX6CRZC6">
+          <address><a @mouseover="mapVisible = true" @mouseleave="mapVisible = false" href="https://goo.gl/maps/5fRYgM7jEbX6CRZC6">
             Sterrebeek
             1933 Zaventem, Belgia</a>
           </address>
           <h3>
           Zo goed als nieuw:</h3>
           <ul>
-            <li v-for="type in types">{{type}}</li>
+            <li class="app-list-item" v-for="type in types">{{type}}</li>
           </ul>
           <h3>
           Labels:</h3>
           <ul>
-            <li v-for="detail in details">{{detail}}</li>
+            <li class="app-list-item" v-for="detail in details">{{detail}}</li>
           </ul><br>
           <p>{{text}}</p>
         </div>
       </div>
     </div><br><br>
+
     <div id="terras" class="container-fluid" @keydown.left = "(id > 1) ? id-- : id = variants.length" @keydown.right = "(id < variants.length) ? id++ : id = 1">
-      <h2 class="title">{{title}}</h2>
+      <h2 class="app-title title">{{title}}</h2>
       <br>
       <div class="row">
-        <div class="col-lg-6 image" v-bind:class="[(!descriptionVisible) ? 'full' : '']" @mouseover="curtainVisible = true" @mouseleave="curtainVisible = false">
-          <div class="btns" v-if="!descriptionVisible">
-            <button @click="(id > 1) ? id-- : id = variants.length">
+        <div class="col-lg-6 app-image" v-bind:class="[(!descriptionVisible) ? 'full' : '']" @mouseover="curtainVisible = true" @mouseleave="curtainVisible = false">
+          <div class="app-control" v-if="!descriptionVisible">
+            <button class="app-btn" @click="(id > 1) ? id-- : id = variants.length">
             <img src="icons/left-arrow.svg" alt="<">
             </button>
-            <button v-bind:style="{width: activeWidth + '%', height: activeHeight + '%' }" @click="descriptionVisible = !descriptionVisible; curtainVisible = false"></button>
-            <button @click="(id < variants.length) ? id++ : id = 1">
+            <button class="app-btn" v-bind:style="{width: activeWidth + '%', height: activeHeight + '%' }" @click="descriptionVisible = !descriptionVisible; curtainVisible = false"></button>
+            <button class="app-btn" @click="(id < variants.length) ? id++ : id = 1">
             <img src="icons/right-arrow.svg" alt=">">
             </button>
-            <button class="closeBtn" @click="descriptionVisible = !descriptionVisible; curtainVisible = false">
+            <button class="app-btn closeBtn" @click="descriptionVisible = !descriptionVisible; curtainVisible = false">
             <img src="icons/cancel.svg" alt="x">
             </button>
           </div>
-          <div @click="descriptionVisible = false" @mouseover="curtainVisible = true" @mouseleave="curtainVisible = false" v-bind:class="[(!descriptionVisible) ? 'none' : '']" class="curtain"><img v-if="curtainVisible" src="icons/expand.svg"></div>
+          <div @click="descriptionVisible = false" @mouseover="curtainVisible = true" @mouseleave="curtainVisible = false" v-bind:class="[(!descriptionVisible) ? 'none' : '']" class="app-curtain"><img v-if="curtainVisible" src="icons/expand.svg"></div>
           <iframe v-if="mapVisible" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d40320.28505003619!2d4.481995667403601!3d50.83083392188398!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c3d9432501a437%3A0x33ffef4790666548!2sTervuren%2C%20Belgia!5e0!3m2!1spl!2sby!4v1628292672572!5m2!1spl!2sby" allowfullscreen="" loading="lazy"></iframe>
           <img :src=" 'img/terras/img-' + id +'.jpg'" @click="descriptionVisible = !descriptionVisible">
         </div>
         <div class="col-lg-6" v-if="descriptionVisible">
           <h4>Afbeeldingen:</h4>
-          <ul class="miniatures">
-            <li v-for="variant in variants" :key="variant.id" class="box" :style="{backgroundImage: variant.miniature}" @mouseover="updateProduct(variant.vImage, variant.id)" @click="descriptionVisible = !descriptionVisible"><a v-bind:style="{width: activeWidth + '%', height: activeHeight + '%' }" href="#terras"></a>
+          <ul class="app-miniatures">
+            <li v-for="variant in variants" :key="variant.id" class="app-box" :style="{backgroundImage: variant.miniature}" @mouseover="updateProduct(variant.vImage, variant.id)" @click="descriptionVisible = !descriptionVisible"><a v-bind:style="{width: activeWidth + '%', height: activeHeight + '%' }" href="#terras"></a>
             </li>
           </ul>
           <h3>
@@ -91,12 +92,58 @@
           <h3>
           Zo goed als nieuw:</h3>
           <ul>
-            <li v-for="type in types">{{type}}</li>
+            <li class="app-list-item" v-for="type in types">{{type}}</li>
           </ul>
           <h3>
           Labels:</h3>
           <ul>
-            <li v-for="detail in details">{{detail}}</li>
+            <li class="app-list-item" v-for="detail in details">{{detail}}</li>
+          </ul>
+        </div>
+      </div>
+    </div><br><br>
+
+    <div id="zink" class="container-fluid" @keydown.left = "(id > 1) ? id-- : id = variants.length" @keydown.right = "(id < variants.length) ? id++ : id = 1">
+      <h2 class="app-title title">{{title}}</h2>
+      <br>
+      <div class="row">
+        <div class="col-lg-6 app-image" v-bind:class="[(!descriptionVisible) ? 'full' : '']" @mouseover="curtainVisible = true" @mouseleave="curtainVisible = false">
+          <div class="app-control" v-if="!descriptionVisible">
+            <button class="app-btn" @click="(id > 1) ? id-- : id = variants.length">
+            <img src="icons/left-arrow.svg" alt="<">
+            </button>
+            <button class="app-btn" v-bind:style="{width: activeWidth + '%', height: activeHeight + '%' }" @click="descriptionVisible = !descriptionVisible; curtainVisible = false"></button>
+            <button class="app-btn" @click="(id < variants.length) ? id++ : id = 1">
+            <img src="icons/right-arrow.svg" alt=">">
+            </button>
+            <button class="app-btn closeBtn" @click="descriptionVisible = !descriptionVisible; curtainVisible = false">
+            <img src="icons/cancel.svg" alt="x">
+            </button>
+          </div>
+          <div @click="descriptionVisible = false" @mouseover="curtainVisible = true" @mouseleave="curtainVisible = false" v-bind:class="[(!descriptionVisible) ? 'none' : '']" class="app-curtain"><img v-if="curtainVisible" src="icons/expand.svg"></div>
+          <iframe v-if="mapVisible" src="https://www.google.com/maps/d/embed?mid=1GBidPGvA_a9Tqi1LR7Pxx5UMiAQ" allowfullscreen="" loading="lazy"></iframe>
+          <img :src=" 'img/zink/img-' + id +'.jpg'" @click="descriptionVisible = !descriptionVisible">
+        </div>
+        <div class="col-lg-6" v-if="descriptionVisible">
+          <h4>Afbeeldingen:</h4>
+          <ul class="app-miniatures">
+            <li v-for="variant in variants" :key="variant.id" class="app-box" :style="{backgroundImage: variant.miniature}" @mouseover="updateProduct(variant.vImage, variant.id)" @click="descriptionVisible = !descriptionVisible"><a v-bind:style="{width: activeWidth + '%', height: activeHeight + '%' }" href="#zink"></a>
+            </li>
+          </ul>
+          <h3>
+          {{description}}</h3>
+          <address><a  @mouseover="mapVisible = true" @mouseleave="mapVisible = false" href="https://goo.gl/maps/oqDNaKwsZWxmnvzW8">
+            Brussels, Belgium</a>
+          </address>
+          <h3>
+          Zo goed als nieuw:</h3>
+          <ul>
+            <li class="app-list-item" v-for="type in types">{{type}}</li>
+          </ul>
+          <h3>
+          Labels:</h3>
+          <ul>
+            <li class="app-list-item" v-for="detail in details">{{detail}}</li>
           </ul>
         </div>
       </div>
